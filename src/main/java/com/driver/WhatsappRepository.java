@@ -60,7 +60,8 @@ public class WhatsappRepository {
 
     public int createMessage(String content) {
         messageId++;
-        Message message = new Message(messageId,content,new Date());
+        Message message = new Message(messageId,content);
+        message.setTimestamp(new Date());
         this.messageHashMap.put(messageId,message);
         return messageId;
     }
