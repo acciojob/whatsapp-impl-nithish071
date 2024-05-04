@@ -2,7 +2,6 @@ package com.driver;
 
 import java.util.*;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -13,7 +12,7 @@ public class WhatsappService {
     public String createUser(String name, String mobile) throws Exception {
         return whatsappRepository.createUser(name, mobile);
     }
-
+//
     public Group createGroup(List<User> users){
         // The list contains at least 2 users where the first user is the admin.
         // If there are only 2 users, the group is a personal chat and the group name should be kept as the name of the second user(other than admin)
@@ -41,12 +40,11 @@ public class WhatsappService {
         //Throw "User is not a participant" if the user is not a part of the group
         return whatsappRepository.changeAdmin(approver, user, group);
     }
-
+//
     public int removeUser(User user) throws Exception{
         //If user is not found in any group, throw "User not found" exception
         //If user is found in a group and it is the admin, throw "Cannot remove admin" exception
         //If user is not the admin, remove the user from the group, remove all its messages from all the databases, and update relevant attributes accordingly.
-
         return whatsappRepository.removeUser(user);
     }
 
